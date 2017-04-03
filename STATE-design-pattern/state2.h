@@ -2,6 +2,9 @@
 #define STATE2
 #include <string>
 
+/*
+	The client member for clients to use
+*/
 class ClientMember {
 	Membership_base* _mem;
 	std::string name;
@@ -26,7 +29,9 @@ public:
 	}
 };
 
-
+/*
+	Base class
+*/
 class Membership_base {
 	std::string nameOfMembership;
 
@@ -39,20 +44,30 @@ public:
 };
 
 
-
+/*
+Highest possible class
+Resets discounts every time it reaches 1000.
+*/
 class FirstClassMember : public Membership_base {
 public:
 	FirstClassMember() : Membership_base("First Class") {};
 
 	int discounts_daily() const override {
-		return 5;
+		int discountsMax = 0;
+		if (discountsMax == 1000) {
+			discountsMax = 0;
+		}
+		return discountsMax;
+		
 	}
 
 	virtual Membership_base* upgrade() const override {
 		return nullptr;
 	}
 };
-
+/*
+Standard class
+*/
 class StandardMember : public Membership_base {
 public:
 	StandardMember() : Membership_base("Standard") {};
@@ -65,7 +80,9 @@ public:
 		return new FirstClassMember();
 	}
 };
-
+/*
+Standard class
+*/
 class FreeMember : public Membership_base {
 public:
 	FreeMember() : Membership_base("Free") {};
