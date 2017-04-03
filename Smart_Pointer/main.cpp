@@ -25,10 +25,11 @@ int main() {
 	//useful when we are not sure if we want to point to something with the resource. 
 	//So it is not created until its required. 
 
-	LazyPointer<Resource> pr;
+	LazyPointer<Resource> pr2;
+
 	pr->dummy_func();
 
-
+	
 	system("pause");
 	return 0;
 }
