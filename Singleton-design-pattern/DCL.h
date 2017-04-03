@@ -7,7 +7,7 @@
 #include <iostream>
 
 class DCLSingleton {
-	static DCLSingleton* instance;
+	static DCLSingleton *_instance;
 	
 	DCLSingleton() {};
 	DCLSingleton(const DCLSingleton&); 
@@ -16,14 +16,14 @@ class DCLSingleton {
 
 public:
 	static DCLSingleton* instance() {
-		if (!instance) {		//first check
+		if (!_instance) {		//first check
 			mtx.lock();			
-			if (!instance)		//second check
-				instance = new DCLSingleton();
+			if (!_instance)		//second check
+				_instance = new DCLSingleton();
 			mtx.unlock();
 
 		}
-		return instance;
+		return _instance;
 	}
 
 	void dummy_func() {
@@ -33,7 +33,7 @@ public:
 
 
 std::mutex DCLSingleton::mtx;
-DCLSingleton *DCLSingleton::instance = nullptr;
+DCLSingleton *DCLSingleton::_instance = nullptr;
 
 
 #endif

@@ -13,6 +13,6 @@ int main() {
 	MeyersSingleton& insta2 = MeyersSingleton::instance();
 	insta2.dummy_func();
 
-
+	system("pause");
 	return 0;
 }
