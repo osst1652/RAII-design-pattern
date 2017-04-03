@@ -34,7 +34,12 @@ public:
 		case FREE:
 			return current_discounts < 1;
 			break;
-			case 
+		case STANDARD:
+			return current_discounts < 5;
+			break;
+		case FIRSTCLASS:
+			return true;
+			break;
 		}
 	}
 
